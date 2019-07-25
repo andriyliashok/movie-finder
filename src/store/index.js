@@ -12,6 +12,4 @@ const store = new Vuex.Store({
   actions: {},
 });
 
-store.dispatch('init');
-
 export default store;
