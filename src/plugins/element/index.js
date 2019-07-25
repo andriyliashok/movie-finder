@@ -3,10 +3,10 @@ import lang from 'element-ui/lib/locale/lang/en';
 import locale from 'element-ui/lib/locale';
 import './element-styles.scss';
 import {
-  Button, Input,
+  Button, Col, Container, Input, Row,
 } from 'element-ui';
 
-const elems = [Button, Input];
+const elems = [Button, Input, Container, Row, Col];
 
 locale.use(lang);
 
