@@ -11,7 +11,7 @@ const moviesStore = {
     items: [],
   },
   getters: {
-    items: ({ items }) => items,
+    moviesList: ({ items }) => items,
   },
   mutations: {
     [MOVIES](state, items) {
