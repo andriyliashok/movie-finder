@@ -1,5 +1,5 @@
 <template>
-§  <div v-if="moviesList">
+  <div v-if="moviesList">
     <h1>Catalog</h1>
     <ElCard
       :body-style="{ padding: '0px' }"
