@@ -1,6 +1,13 @@
 <template>
-  <div>
-    <h1>Catalog</h1>
+  <div class="catalog">
+    <div class="catalog__top">
+      <div class="catalog__back">
+        <RouterLink to="/">
+          <ElButton type="text">Back</ElButton>
+        </RouterLink>
+      </div>
+      <h1>Catalog</h1>
+    </div>
     <TinySlider v-bind="tinySliderOptions">
       <div
         v-for="movie in moviesList"
@@ -42,7 +49,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.catalog {
+  &__top {
+    position: relative;
+  }
+
+  &__back {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
 /deep/ .tns-controls {
   margin-bottom: 30px;
 }
