@@ -1,47 +1,23 @@
 <template>
   <div>
     <h1>Search</h1>
-    <ElForm
-      @submit.prevent.native="submit"
-    >
-      <ElRow type="flex" justify="center">
-        <ElCol :span="12">
-          <ElInput
-            placeholder="Please input"
-            v-model="input"
-          />
-        </ElCol>
-        <ElCol :span="3">
-          <ElButton
-            :disabled="isDisabled"
-            type="primary"
-            native-type="submit"
-          >
-            Search
-          </ElButton>
-        </ElCol>
-      </ElRow>
-    </ElForm>
+    <SearchForm @submit="onSubmit"/>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import SearchForm from '@/components/SearchForm';
 
 export default {
   name: 'Home',
-  data: () => ({
-    input: '',
-  }),
-  computed: {
-    isDisabled() {
-      return this.input === '';
-    }
+  components: {
+    SearchForm,
   },
   methods: {
     ...mapActions('movies', ['searchMovies']),
-    submit() {
-      this.searchMovies(this.input);
+    onSubmit(val) {
+      this.searchMovies(val);
       this.$router.push({ name: 'catalog' });
     }
   },
