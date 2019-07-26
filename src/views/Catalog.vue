@@ -8,7 +8,10 @@
       </div>
       <h1>Catalog</h1>
     </div>
-    <TinySlider v-bind="tinySliderOptions">
+    <TinySlider
+      v-if="moviesList"
+      v-bind="tinySliderOptions"
+    >
       <div
         v-for="movie in moviesList"
         :key="movie.imdbID"
@@ -16,6 +19,7 @@
         <MovieCard :movie="movie"/>
       </div>
     </TinySlider>
+    <h3 v-else>Sorry, something went wrong, try another settings</h3>
   </div>
 </template>
 
@@ -65,5 +69,16 @@ export default {
 
 /deep/ .tns-controls {
   margin-bottom: 30px;
+
+  button {
+    width: 60px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+  }
+
+  [data-controls="prev"] {
+    margin-right: 20px;
+  }
 }
 </style>

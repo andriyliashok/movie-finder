@@ -8,7 +8,7 @@ const apiKey = process.env.VUE_APP_API_TOKEN;
 const moviesStore = {
   namespaced: true,
   state: {
-    items: [],
+    items: null,
   },
   getters: {
     moviesList: ({ items }) => items,
@@ -33,7 +33,7 @@ const moviesStore = {
       }
     },
     clearMovies({ commit }) {
-      commit(MOVIES, []);
+      commit(MOVIES, null);
     },
   },
 };
