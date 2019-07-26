@@ -16,8 +16,8 @@ export default {
   },
   methods: {
     ...mapActions('movies', ['searchMovies']),
-    onSubmit(val) {
-      this.searchMovies(val);
+   async onSubmit(val) {
+     await this.searchMovies(val);
       this.$router.push({ name: 'catalog' });
     }
   },
