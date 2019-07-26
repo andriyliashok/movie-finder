@@ -1,3 +1,4 @@
 import './element';
+import './tiny-slider';
 // eslint-disable-next-line import/prefer-default-export
 export { default as axios } from './axios';

@@ -1,32 +1,35 @@
 <template>
-  <div v-if="moviesList">
+  <div>
     <h1>Catalog</h1>
-    <ElCard
-      :body-style="{ padding: '0px' }"
-      v-for="movie in moviesList"
-      :key="movie.imdbID">
-      <img
-        :src="movie.Poster"
-        class="image"
+    <TinySlider v-bind="tinySliderOptions">
+      <div
+        v-for="movie in moviesList"
+        :key="movie.imdbID"
       >
-      <div class="item">
-        Title: {{ movie.Title }}
+        <MovieCard :movie="movie"/>
       </div>
-      <div class="item">
-        Director:
-      </div>
-      <div class="item">
-        Year: {{ movie.Year }}
-      </div>
-    </ElCard>
+    </TinySlider>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import MovieCard from '@/components/MovieCard';
 
 export default {
   name: 'Catalog',
+  components: {
+    MovieCard,
+  },
+  data: () => ({
+    tinySliderOptions: {
+      mouseDrag: true,
+      loop: false,
+      items: 3,
+      gutter: 0,
+      slideBy: 1,
+    }
+  }),
   computed: {
     ...mapGetters('movies', ['moviesList']),
   },
@@ -40,8 +43,7 @@ export default {
 </script>
 
 <style scoped>
-.item {
-  text-align: left;
-  padding: 8px 0;
+/deep/ .tns-controls {
+  margin-bottom: 30px;
 }
 </style>
