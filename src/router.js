@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './components/Home';
-import Catalog from './components/Catalog';
 
 Vue.use(Router);
+
+function loadView(view) {
+  return () => import(/* webpackChunkName: "view-[request]" */ `@/views/${view}.vue`);
+}
 
 export default new Router({
   mode: 'history',
@@ -12,13 +14,12 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
-      meta: { hideHeader: true },
+      component: loadView('Home'),
     },
     {
       path: '/catalog',
       name: 'catalog',
-      component: Catalog,
+      component: loadView('Catalog'),
     },
   ],
 });

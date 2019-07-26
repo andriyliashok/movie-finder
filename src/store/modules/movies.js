@@ -3,7 +3,7 @@ import { axios as api } from '@/plugins';
 
 const { MOVIES } = mutations;
 
-const apiKey = '32bdf52';
+const apiKey = process.env.VUE_APP_API_TOKEN;
 
 const moviesStore = {
   namespaced: true,
